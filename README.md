@@ -8,8 +8,8 @@ Physics Simulation
 
 ## Needed classes
 1. Main
-   a. Asks user input
-2. Physiscs
-   a. Has all equation pre-setup and ready to go
-3. GUI (optional)
-   a. Create all nescessary things for creating a user interface
+   Asks user input
+3. Physiscs
+   Has all equation pre-setup and ready to go
+4. GUI (optional)
+   Create all nescessary things for creating a user interface
