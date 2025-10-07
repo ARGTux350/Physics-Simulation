@@ -9,16 +9,14 @@ import org.apache.commons.math3.fitting.WeightedObservedPoints;
 public class ProjectilePlotter {
 
     public static void plot(double[] xInput, double[] yInput, String chartTitle) throws IOException {
-        // Step 1: Fit a quadratic curve (degree 2)
         WeightedObservedPoints obs = new WeightedObservedPoints();
         for (int i = 0; i < xInput.length; i++) {
             obs.add(xInput[i], yInput[i]);
         }
 
-        PolynomialCurveFitter fitter = PolynomialCurveFitter.create(2); // quadratic
-        double[] coeffs = fitter.fit(obs.toList()); // [c, b, a] for ax^2 + bx + c
+        PolynomialCurveFitter fitter = PolynomialCurveFitter.create(2);
+        double[] coeffs = fitter.fit(obs.toList());
 
-        // Step 2: Generate smooth curve
         int numPoints = 100;
         double minX = Arrays.stream(xInput).min().getAsDouble();
         double maxX = Arrays.stream(xInput).max().getAsDouble();
@@ -30,7 +28,6 @@ public class ProjectilePlotter {
             yData[i] = coeffs[2] * xData[i] * xData[i] + coeffs[1] * xData[i] + coeffs[0];
         }
 
-        // Step 3: Create chart
         XYChart chart = new XYChartBuilder()
                 .width(800)
                 .height(600)
@@ -39,19 +36,16 @@ public class ProjectilePlotter {
                 .yAxisTitle("Displacement (y)")
                 .build();
 
-        // Fitted curve
         XYSeries fittedSeries = chart.addSeries("Trajectory", xData, yData);
         fittedSeries.setXYSeriesRenderStyle(XYSeries.XYSeriesRenderStyle.Line);
         fittedSeries.setLineColor(java.awt.Color.BLUE);
         fittedSeries.setMarker(SeriesMarkers.NONE);
 
-        // Original data points
         XYSeries dataSeries = chart.addSeries("Original Data", xInput, yInput);
         dataSeries.setXYSeriesRenderStyle(XYSeries.XYSeriesRenderStyle.Scatter);
         dataSeries.setMarker(SeriesMarkers.CIRCLE);
         dataSeries.setMarkerColor(java.awt.Color.RED);
 
-        // Style
         chart.getStyler().setAxisTitleFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 14));
         chart.getStyler().setLegendVisible(true);
         chart.getStyler().setMarkerSize(6);
