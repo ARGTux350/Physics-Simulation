@@ -7,8 +7,9 @@ public class GUI{
 	private JTextField startVelo, angle;
 	private JLabel label1, label2, label3;
 	private JButton button;
-	private JComboBox cb;
+	private JComboBox cb, options;
 	private String[] points = {"3","5","7","9","11","13"};
+	private String[] inputOptions = {"vo + a", "v + a","v + a + h" };
 	private Boolean calculateCheck = false;
 	
 	public GUI() {
