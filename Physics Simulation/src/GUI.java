@@ -48,6 +48,27 @@ public class GUI{
 		});
 		panel.add(cb);
 		
+		options = new JComboBox(inputOptions);
+		options.setSelectedIndex(0);
+		options.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String choice = (String)cb.getSelectedItem();
+				
+				if(choice.equals("vo + a")) {
+					
+				}else if(choice.equals("v + a")) {
+					
+				}else if(choice.equals("v + a + h")) {
+					
+				}
+				
+			}
+			
+		});
+		panel.add(options);
+		
 		label1 = new JLabel("Starting Velocity");
 		panel.add(label1);
 		
