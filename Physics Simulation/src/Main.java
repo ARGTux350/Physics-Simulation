@@ -1,9 +1,12 @@
+import java.util.ArrayList;
 import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
+		
+		    GUI projectileMotion = new GUI();
         SomeEquations m = new SomeEquations();
 
         double t = 0, v = 0, V = 0, a = -9.8, A = 0, d = 0, vx = 0;
